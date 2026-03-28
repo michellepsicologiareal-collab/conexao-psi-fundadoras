@@ -1,117 +1,163 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Conexão Psi</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano Fundadora — Conexão Psi</title>
 
-  <style>
-    body{
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f7f7f7;
-      color: #333;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    header{
-      background: #2e7d73;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+<style>
+:root {
+  --plum:#2D1B4E;
+  --gold:#C8934A;
+  --cream:#FAF7F2;
+  --text:#2a1f3d;
+  --muted:#7a6e8a;
+}
 
-    .container{
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
+*{margin:0;padding:0;box-sizing:border-box}
 
-    .card{
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+body{
+  background:var(--cream);
+  font-family:'Outfit',sans-serif;
+  color:var(--text);
+}
 
-    .price{
-      font-size: 28px;
-      font-weight: bold;
-      color: #2e7d73;
-    }
+/* GATE */
+#gate{
+  position:fixed;
+  inset:0;
+  background:var(--plum);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  padding:32px;
+  text-align:center;
+}
 
-    button{
-      background: #2e7d73;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
+#gate h1{
+  color:var(--cream);
+  font-family:'Cormorant Garamond';
+  margin-bottom:20px;
+}
 
-    button:hover{
-      opacity: 0.9;
-    }
+#gate input{
+  padding:14px;
+  width:260px;
+  border-radius:10px;
+  border:none;
+  text-align:center;
+  margin-bottom:10px;
+}
 
-    a{
-      display: inline-block;
-      margin-top: 10px;
-      color: #2e7d73;
-      text-decoration: none;
-    }
-  </style>
+#gate button{
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  background:var(--gold);
+  color:white;
+  cursor:pointer;
+}
+
+/* CONTENT */
+.content{
+  display:none;
+}
+
+/* HERO */
+.hero{
+  background:var(--plum);
+  color:white;
+  padding:50px 20px;
+  text-align:center;
+}
+
+.hero em{color:var(--gold)}
+
+.section{
+  padding:30px 20px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.05);
+}
+
+.price{
+  font-size:42px;
+  color:var(--plum);
+  font-weight:600;
+}
+
+button.cta{
+  background:var(--gold);
+  color:white;
+  border:none;
+  padding:16px;
+  border-radius:12px;
+  width:100%;
+  margin-top:10px;
+  cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
-<header>
+<!-- SENHA -->
+<div id="gate">
   <h1>Conexão Psi</h1>
-  <p>Rede de encaminhamentos entre psicólogas</p>
-</header>
+  <input id="senha" type="password" placeholder="Digite a senha">
+  <button onclick="acessar()">Entrar</button>
+</div>
 
-<div class="container">
+<!-- CONTEÚDO -->
+<div class="content" id="content">
 
-  <!-- PLANO FUNDADORA -->
-  <div class="card">
-
-    <h2>Plano Fundadora</h2>
-    <p>Para profissionais da rede Conexão Psi</p>
-
-    <h3>Condição especial por 3 meses</h3>
-
-    <p class="price">R$ 14,00 / mês</p>
-    <p>cancelamento livre</p>
-    <p><strong>Depois: R$ 27,90/mês</strong></p>
-
-    <p>⚠️ Oferta por tempo limitado</p>
-
-    <h3>O que você ganha</h3>
-
-    <ul>
-      <li>✍️ Bio completa — destaque sua abordagem profissional</li>
-      <li>⭐ Destaque no diretório — mais visibilidade para pacientes</li>
-      <li>📲 Contato direto — WhatsApp no perfil</li>
-    </ul>
-
-    <button>Assinar agora — R$14</button>
-
-    <br/>
-
-    <a href="#">Ver diretório</a>
-
+  <div class="hero">
+    <h1>Plano <em>Fundadora</em></h1>
+    <p>Oferta exclusiva para profissionais da rede</p>
   </div>
 
-  <!-- INFO GERAL -->
-  <div class="card">
-    <h2>Como funciona</h2>
-    <p>
-      A Conexão Psi conecta pacientes a psicólogas da rede
-      e facilita encaminhamentos entre profissionais.
-    </p>
+  <div class="section">
+
+    <div class="card">
+      <h2>Condição especial</h2>
+      <p class="price">R$14,00</p>
+      <p>por mês · depois R$27,90</p>
+    </div>
+
+    <div class="card">
+      <h3>Benefícios</h3>
+      <p>✔ Bio completa</p>
+      <p>✔ Destaque no diretório</p>
+      <p>✔ WhatsApp no perfil</p>
+    </div>
+
+    <button class="cta">Assinar agora</button>
+
   </div>
 
 </div>
+
+<script>
+function acessar(){
+  const senha = document.getElementById("senha").value.toLowerCase().trim();
+
+  if(senha === "fundadora" || senha === "conexaopsi"){
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  } else {
+    alert("Senha incorreta");
+  }
+}
+</script>
 
 </body>
 </html>
