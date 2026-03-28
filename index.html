@@ -9,25 +9,34 @@
 body{
     margin:0;
     font-family: Arial, sans-serif;
-    background:#0b1220;
+    background:#150D2E;
     color:#ffffff;
 }
 
 /* HEADER */
 header{
-    background: linear-gradient(90deg,#0f766e,#14b8a6);
-    padding:40px 20px;
+    background: radial-gradient(circle at top,#2a1455,#150D2E);
+    padding:50px 20px;
     text-align:center;
+    border-bottom:1px solid #C8A96A;
 }
 
 header h1{
-    font-size:34px;
+    font-size:36px;
     margin-bottom:10px;
+    letter-spacing:1px;
 }
 
 header p{
     font-size:16px;
-    opacity:0.9;
+    opacity:0.85;
+}
+
+/* GLOBO SIMBÓLICO */
+.globe{
+    font-size:28px;
+    margin-bottom:10px;
+    color:#E8C98A;
 }
 
 /* CONTAINER */
@@ -39,51 +48,53 @@ header p{
 
 /* CARDS */
 .card{
-    background:#111827;
+    background:#1B1038;
     padding:20px;
-    border-radius:12px;
+    border-radius:14px;
     margin-bottom:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+
+    border:1px solid #C8A96A;
+    box-shadow:0 10px 35px rgba(0,0,0,0.6);
 }
 
+/* TÍTULOS */
 h2{
-    color:#14b8a6;
+    color:#E8C98A;
     margin-top:0;
 }
 
+/* BOTÃO */
 .button{
     display:inline-block;
-    background:#14b8a6;
-    color:#fff;
+    background:linear-gradient(90deg,#C8A96A,#E8C98A);
+    color:#150D2E;
     padding:12px 18px;
-    border-radius:8px;
+    border-radius:10px;
     text-decoration:none;
     margin-top:10px;
     font-weight:bold;
+    box-shadow:0 6px 18px rgba(0,0,0,0.4);
+    transition:0.2s;
 }
 
 .button:hover{
-    background:#0d9488;
+    transform:scale(1.02);
 }
 
 /* ALERTA */
 .warning{
-    background:#1f2937;
-    border-left:4px solid #ef4444;
-    padding:15px;
-    border-radius:8px;
+    background:#24143f;
+    border-left:4px solid #E8C98A;
 }
 
 /* PREMIUM */
 .gold{
-    background:#1f2937;
-    border-left:4px solid #22c55e;
-    padding:15px;
-    border-radius:8px;
+    background:#24143f;
+    border:1px solid #C8A96A;
 }
 
 .highlight{
-    color:#22c55e;
+    color:#E8C98A;
     font-weight:bold;
 }
 </style>
@@ -92,6 +103,7 @@ h2{
 <body>
 
 <header>
+    <div class="globe">🌐</div>
     <h1>CONEXÃO PSI ESTÁ NO AR</h1>
     <p>Uma rede viva de encaminhamentos e visibilidade para psis</p>
 </header>
@@ -173,7 +185,7 @@ h2{
         Se ainda não criou seu perfil, esse é o momento de entrar na rede.
         </p>
 
-        <a class="button" href="SEU_LINK_KIWIFY_AQUI" target="_blank">
+        <a class="button" href="https://pay.kiwify.com.br/O5SVu87" target="_blank">
         Quero participar
         </a>
     </div>
