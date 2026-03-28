@@ -2,195 +2,936 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Conexão Psi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Conexão Psi — Rede Colaborativa de Psicólogos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#150D2E;
-    color:#ffffff;
+:root {
+  --plum: #2D1B4E;
+  --plum-mid: #3d2660;
+  --plum-light: #4e3373;
+  --gold: #C8934A;
+  --gold-light: #daa968;
+  --gold-pale: #f0d9b5;
+  --cream: #FAF7F2;
+  --cream-dark: #F0EBE1;
+  --text: #1e1530;
+  --muted: #7a6e8a;
 }
 
-/* HEADER */
-header{
-    background: radial-gradient(circle at top,#2a1455,#150D2E);
-    padding:50px 20px;
-    text-align:center;
-    border-bottom:1px solid #C8A96A;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
 }
 
-header h1{
-    font-size:36px;
-    margin-bottom:10px;
-    letter-spacing:1px;
+/* ─── HERO ─── */
+.hero {
+  background: var(--plum);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px 80px;
+  position: relative;
+  overflow: hidden;
 }
 
-header p{
-    font-size:16px;
-    opacity:0.85;
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.hero-orb-1 {
+  width: 400px; height: 400px;
+  background: rgba(200,147,74,0.12);
+  top: -100px; right: -100px;
+}
+.hero-orb-2 {
+  width: 300px; height: 300px;
+  background: rgba(200,147,74,0.07);
+  bottom: -60px; left: -60px;
+}
+.hero-orb-3 {
+  width: 200px; height: 200px;
+  background: rgba(78,51,115,0.6);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
 }
 
-/* GLOBO SIMBÓLICO */
-.globe{
-    font-size:28px;
-    margin-bottom:10px;
-    color:#E8C98A;
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(200,147,74,0.15);
+  border: 1px solid rgba(200,147,74,0.35);
+  color: var(--gold-pale);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s ease both;
 }
 
-/* CONTAINER */
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:30px 20px;
+.dot-live {
+  width: 6px; height: 6px;
+  background: #6de87a;
+  border-radius: 50%;
+  animation: blink 1.4s ease-in-out infinite;
 }
 
-/* CARDS */
-.card{
-    background:#1B1038;
-    padding:20px;
-    border-radius:14px;
-    margin-bottom:20px;
-
-    border:1px solid #C8A96A;
-    box-shadow:0 10px 35px rgba(0,0,0,0.6);
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
-/* TÍTULOS */
-h2{
-    color:#E8C98A;
-    margin-top:0;
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 8vw, 72px);
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s 0.1s ease both;
 }
 
-/* BOTÃO */
-.button{
-    display:inline-block;
-    background:linear-gradient(90deg,#C8A96A,#E8C98A);
-    color:#150D2E;
-    padding:12px 18px;
-    border-radius:10px;
-    text-decoration:none;
-    margin-top:10px;
-    font-weight:bold;
-    box-shadow:0 6px 18px rgba(0,0,0,0.4);
-    transition:0.2s;
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
 }
 
-.button:hover{
-    transform:scale(1.02);
+.hero p {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(250,247,242,0.65);
+  max-width: 420px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s 0.2s ease both;
 }
 
-/* ALERTA */
-.warning{
-    background:#24143f;
-    border-left:4px solid #E8C98A;
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s 0.3s ease both;
 }
 
-/* PREMIUM */
-.gold{
-    background:#24143f;
-    border:1px solid #C8A96A;
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(200,147,74,0.38);
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
 }
 
-.highlight{
-    color:#E8C98A;
-    font-weight:bold;
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(200,147,74,0.45);
+}
+
+.btn-ghost {
+  color: rgba(250,247,242,0.55);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.btn-ghost:hover { color: var(--gold-pale); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(250,247,242,0.3);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  z-index: 1;
+  animation: fadeUp 0.6s 0.5s ease both;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, rgba(200,147,74,0.5), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+/* ─── STATS ─── */
+.stats {
+  background: var(--plum-mid);
+  padding: 40px 24px;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+  padding: 20px 40px;
+  border-right: 1px solid rgba(200,147,74,0.15);
+  animation: fadeUp 0.5s ease both;
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.stat-l {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(250,247,242,0.5);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ─── SEÇÕES ─── */
+.section {
+  padding: 80px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 500;
+  color: var(--plum);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.section h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.section p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+/* ─── CARDS DE BENEFÍCIOS ─── */
+.benefits {
+  background: var(--cream-dark);
+  padding: 80px 24px;
+}
+
+.benefits-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.benefits h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 500;
+  color: var(--plum);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.benefits .eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.benefit-card {
+  background: white;
+  border-radius: 14px;
+  padding: 22px 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  border: 1px solid rgba(45,27,78,0.06);
+  box-shadow: 0 2px 12px rgba(45,27,78,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.benefit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(45,27,78,0.1);
+}
+
+.benefit-icon {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: rgba(200,147,74,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.benefit-body strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.benefit-body span {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ─── ALERTA / CTA URGÊNCIA ─── */
+.urgency {
+  background: var(--plum);
+  padding: 64px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.urgency::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(200,147,74,0.02) 40px,
+    rgba(200,147,74,0.02) 80px
+  );
+}
+
+.urgency-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.urgency h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.urgency h2 em { color: var(--gold); font-style: italic; }
+
+.status-list {
+  list-style: none;
+  margin: 24px 0 32px;
+  text-align: left;
+  display: inline-block;
+}
+
+.status-list li {
+  font-size: 14px;
+  color: rgba(250,247,242,0.75);
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-x {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(255,100,100,0.2);
+  border: 1px solid rgba(255,100,100,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  color: #ff9090;
+  flex-shrink: 0;
+}
+
+/* ─── PREMIUM ─── */
+.premium {
+  background: linear-gradient(135deg, #2D1B4E 0%, #1a0f2e 100%);
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.premium::after {
+  content: '⭐';
+  position: absolute;
+  font-size: 200px;
+  opacity: 0.03;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.premium-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.premium .eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.premium h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.premium h2 em { color: var(--gold); font-style: italic; }
+
+.premium p {
+  color: rgba(250,247,242,0.6);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.premium-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.pf {
+  background: rgba(250,247,242,0.05);
+  border: 1px solid rgba(200,147,74,0.2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: rgba(250,247,242,0.8);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pf-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.price-pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  background: rgba(200,147,74,0.12);
+  border: 1px solid rgba(200,147,74,0.3);
+  border-radius: 20px;
+  padding: 8px 20px;
+  margin-bottom: 20px;
+}
+
+.price-pill .curr { font-size: 16px; color: var(--gold); }
+.price-pill .val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+.price-pill .per { font-size: 13px; color: rgba(250,247,242,0.45); }
+
+/* ─── COMO PARTICIPAR ─── */
+.steps {
+  padding: 80px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.steps .eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.steps h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 500;
+  color: var(--plum);
+  margin-bottom: 36px;
+}
+
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step-item {
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+
+.step-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 44px;
+  bottom: -8px;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(200,147,74,0.4), rgba(200,147,74,0.05));
+}
+
+.step-num {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  background: white;
+  margin-top: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-content {
+  padding-bottom: 28px;
+}
+
+.step-content strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.step-content span {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ─── FOOTER CTA ─── */
+.footer-cta {
+  background: var(--cream-dark);
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.footer-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 500;
+  color: var(--plum);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.footer-cta h2 em { color: var(--gold); font-style: italic; }
+
+.footer-cta p {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 360px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.cta-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--plum);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 13px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1.5px solid rgba(45,27,78,0.2);
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: rgba(45,27,78,0.05);
+  border-color: var(--plum);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--plum);
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+
+.footer-logo span { color: var(--gold); }
+
+footer p {
+  font-size: 12px;
+  color: rgba(250,247,242,0.35);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ─── ANIMAÇÕES ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 500px) {
+  .stat { padding: 16px 20px; }
+  .premium-features { grid-template-columns: 1fr; }
 }
 </style>
 </head>
-
 <body>
 
-<header>
-    <div class="globe">🌐</div>
-    <h1>CONEXÃO PSI ESTÁ NO AR</h1>
-    <p>Uma rede viva de encaminhamentos e visibilidade para psis</p>
-</header>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
 
-<div class="container">
+  <div class="hero-badge">
+    <span class="dot-live"></span>
+    Sistema no ar
+  </div>
 
-    <div class="card">
-        <h2>🚀 O SISTEMA JÁ ESTÁ ATIVO</h2>
-        <p>
-        A Conexão Psi já está funcionando.
-        Pacientes já conseguem encontrar psis, visualizar perfis e entrar em contato diretamente.
-        </p>
+  <h1>A rede que conecta<br><em>psicólogos e pacientes</em></h1>
 
-        <a class="button" href="https://tinyurl.com/ConexaoPsiRede" target="_blank">
-        Acessar diretório
-        </a>
-    </div>
+  <p>Encaminhamentos reais, visibilidade ética e uma clínica mais sustentável — para cada uma de nós.</p>
 
-    <div class="card">
-        <h2>🧠 COMO FUNCIONA NA PRÁTICA</h2>
-        <p>
-        ✔ Pacientes encontram psis no diretório<br>
-        ✔ Visualizam perfis e especialidades<br>
-        ✔ Entram em contato direto<br><br>
+  <div class="hero-cta">
+    <a href="https://tinyurl.com/ConexaoPsiRede" target="_blank" class="btn-primary">
+      Ver o diretório →
+    </a>
+    <a href="https://tally.so/r/b5OGYZ" target="_blank" class="btn-ghost">
+      Criar meu perfil gratuito
+    </a>
+  </div>
 
-        ✔ Psis recebem encaminhamentos<br>
-        ✔ Ganham visibilidade dentro da rede<br>
-        ✔ São indicadas por outros profissionais
-        </p>
-    </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    saiba mais
+  </div>
+</section>
 
-    <div class="card warning">
-        <h2>⚠️ PONTO CRÍTICO</h2>
-        <p>
-        Quem ainda não criou o perfil:
-        </p>
-
-        <p>
-        ❌ não aparece no diretório<br>
-        ❌ não é encontrado por pacientes<br>
-        ❌ não recebe indicações da rede
-        </p>
-
-        <a class="button" href="https://tally.so/r/b5OGYZ" target="_blank">
-        Criar meu perfil gratuito
-        </a>
-    </div>
-
-    <div class="card gold">
-        <h2>⭐ PERFIL PREMIUM — VISIBILIDADE AUMENTADA</h2>
-
-        <p>
-        ✔ bio completa visível para pacientes<br>
-        ✔ destaque no topo do diretório<br>
-        ✔ especialidades em evidência<br>
-        ✔ prioridade na busca<br>
-        ✔ maior chance de encaminhamentos
-        </p>
-
-        <p class="highlight">
-        Upgrade opcional dentro da rede.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>📣 CONCEITO DA REDE</h2>
-        <p>
-        A Conexão Psi nasce para criar um sistema simples:<br><br>
-
-        <b>mais visibilidade para psis + mais acesso para pacientes + mais encaminhamentos reais</b><br><br>
-
-        Tudo dentro de um fluxo ético e alinhado ao CRP.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>👉 PRÓXIMO PASSO</h2>
-        <p>
-        Se ainda não criou seu perfil, esse é o momento de entrar na rede.
-        </p>
-
-        <a class="button" href="https://pay.kiwify.com.br/O5SVu87" target="_blank">
-        Quero participar
-        </a>
-    </div>
-
+<!-- STATS -->
+<div class="stats">
+  <div class="stat reveal">
+    <div class="stat-n">137</div>
+    <div class="stat-l">psicólogas na rede</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-n">64</div>
+    <div class="stat-l">perfis no diretório</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-n">100%</div>
+    <div class="stat-l">gratuito para entrar</div>
+  </div>
 </div>
 
+<!-- O QUE É -->
+<section class="section reveal">
+  <div class="section-eyebrow">O conceito</div>
+  <h2>Uma rede que trabalha <em>por você</em></h2>
+  <p>
+    A Conexão Psi nasceu para resolver um problema real: psicólogos perdendo pacientes por falta de visibilidade, e pacientes sem conseguir encontrar atendimento de qualidade.
+  </p>
+  <p>
+    Nossa proposta é simples — construir, juntas, um sistema que fortaleça a clínica de cada profissional com organização, encaminhamentos e ética.
+  </p>
+  <a href="https://tinyurl.com/ConexaoPsiRede" target="_blank" class="btn-primary" style="font-size:14px; padding:13px 24px;">
+    Ver o diretório →
+  </a>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="benefits">
+  <div class="benefits-inner">
+    <div class="eyebrow reveal">Para quem entra na rede</div>
+    <h2 class="reveal">Tudo o que você <em>ganha</em></h2>
+
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🔍</div>
+        <div class="benefit-body">
+          <strong>Visibilidade para pacientes</strong>
+          <span>Seu perfil aparece no diretório público — pacientes já podem te encontrar e entrar em contato.</span>
+        </div>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🤝</div>
+        <div class="benefit-body">
+          <strong>Encaminhamentos da rede</strong>
+          <span>Acesse casos indicados por colegas. Quando uma psi não pode atender, ela indica alguém da rede.</span>
+        </div>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">📲</div>
+        <div class="benefit-body">
+          <strong>Contato direto com pacientes</strong>
+          <span>Seu WhatsApp fica visível no perfil para agendamento rápido, sem intermediários.</span>
+        </div>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌱</div>
+        <div class="benefit-body">
+          <strong>Rede colaborativa ativa</strong>
+          <span>137 profissionais que se ajudam, indicam e fortalecem a prática clínica umas das outras.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGÊNCIA -->
+<section class="urgency">
+  <div class="urgency-inner">
+    <h2 class="reveal">Quem não se cadastrou,<br><em>não aparece</em></h2>
+
+    <ul class="status-list reveal">
+      <li>
+        <span class="status-x">✕</span>
+        Não é encontrada por pacientes no diretório
+      </li>
+      <li>
+        <span class="status-x">✕</span>
+        Não recebe encaminhamentos da rede
+      </li>
+      <li>
+        <span class="status-x">✕</span>
+        Não aparece nas buscas por especialidade
+      </li>
+    </ul>
+
+    <a href="https://tally.so/r/b5OGYZ" target="_blank" class="btn-primary reveal">
+      Criar meu perfil gratuito →
+    </a>
+  </div>
+</section>
+
+<!-- PREMIUM -->
+<section class="premium">
+  <div class="premium-inner">
+    <div class="eyebrow reveal">Para quem quer mais</div>
+    <h2 class="reveal">Perfil Premium —<br><em>visibilidade ampliada</em></h2>
+    <p class="reveal">
+      Destaque dourado, bio completa e prioridade na busca. Para quem quer ser encontrada antes das demais.
+    </p>
+
+    <div class="premium-features reveal">
+      <div class="pf"><span class="pf-dot"></span>Bio profissional completa</div>
+      <div class="pf"><span class="pf-dot"></span>Destaque dourado no topo</div>
+      <div class="pf"><span class="pf-dot"></span>Especialidades em evidência</div>
+      <div class="pf"><span class="pf-dot"></span>Prioridade na busca</div>
+      <div class="pf"><span class="pf-dot"></span>WhatsApp visível no perfil</div>
+      <div class="pf"><span class="pf-dot"></span>Aparecer antes das demais</div>
+    </div>
+
+    <div class="price-pill reveal">
+      <span class="curr">R$</span>
+      <span class="val">14</span>
+      <span class="per">,00/mês · primeiros 3 meses</span>
+    </div>
+
+    <div style="margin-top: 16px;" class="reveal">
+      <a href="https://pay.kiwify.com.br/O5SVu87?coupon=FUNDADORA" target="_blank" class="btn-primary">
+        ⭐ Assinar como Fundadora
+      </a>
+      <p style="margin-top: 10px; font-size: 12px; color: rgba(250,247,242,0.35);">
+        Use o cupom <strong style="color: var(--gold-pale); letter-spacing: 1px;">FUNDADORA</strong> — oferta por 7 dias
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- COMO PARTICIPAR -->
+<section class="steps">
+  <div class="eyebrow reveal">Simples assim</div>
+  <h2 class="reveal">Como entrar na rede</h2>
+
+  <div class="step-list">
+    <div class="step-item reveal">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Crie seu perfil gratuito</strong>
+        <span>Preencha o formulário em menos de 3 minutos. Nome, CRP, abordagem, cidade — e pronto.</span>
+      </div>
+    </div>
+
+    <div class="step-item reveal">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Aguarde a aprovação</strong>
+        <span>A admin valida o perfil e você aparece no diretório público automaticamente.</span>
+      </div>
+    </div>
+
+    <div class="step-item reveal">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Complete seus dados</strong>
+        <span>Acesse seu perfil com seu e-mail e adicione WhatsApp, valor de sessão e disponibilidade.</span>
+      </div>
+    </div>
+
+    <div class="step-item reveal">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Receba encaminhamentos</strong>
+        <span>Acesse a área de pacientes da rede com a senha e registre interesse nos casos disponíveis.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="footer-cta">
+  <h2 class="reveal">Pronta para <em>entrar</em>?</h2>
+  <p class="reveal">O cadastro é gratuito e leva menos de 3 minutos.</p>
+  <div class="cta-stack reveal">
+    <a href="https://tally.so/r/b5OGYZ" target="_blank" class="btn-primary">
+      Criar meu perfil gratuito →
+    </a>
+    <a href="https://tinyurl.com/ConexaoPsiRede" target="_blank" class="btn-outline">
+      Ver o diretório primeiro
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Conexão <span>Psi</span></div>
+  <p>Rede colaborativa de psicólogos</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
