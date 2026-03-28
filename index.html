@@ -5,159 +5,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plano Fundadora — Conexão Psi</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
-:root {
-  --plum:#2D1B4E;
-  --gold:#C8934A;
-  --cream:#FAF7F2;
-  --text:#2a1f3d;
-  --muted:#7a6e8a;
-}
-
-*{margin:0;padding:0;box-sizing:border-box}
-
 body{
-  background:var(--cream);
-  font-family:'Outfit',sans-serif;
-  color:var(--text);
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#f5f3ef;
+  color:#2a1f3d;
 }
 
-/* GATE */
-#gate{
-  position:fixed;
-  inset:0;
-  background:var(--plum);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  padding:32px;
-  text-align:center;
+.container{
+  max-width:600px;
+  margin:60px auto;
+  padding:24px;
+  background:white;
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
 }
 
-#gate h1{
-  color:var(--cream);
-  font-family:'Cormorant Garamond';
-  margin-bottom:20px;
-}
-
-#gate input{
-  padding:14px;
-  width:260px;
-  border-radius:10px;
-  border:none;
-  text-align:center;
+h1{
   margin-bottom:10px;
 }
 
-#gate button{
-  padding:12px 20px;
+.price{
+  font-size:40px;
+  font-weight:bold;
+  color:#2D1B4E;
+  margin:10px 0;
+}
+
+.old{
+  color:#777;
+  font-size:14px;
+}
+
+.badge{
+  display:inline-block;
+  background:#2D1B4E;
+  color:white;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  margin-bottom:20px;
+}
+
+ul{
+  padding-left:18px;
+}
+
+button{
+  margin-top:20px;
+  width:100%;
+  padding:14px;
   border:none;
   border-radius:10px;
-  background:var(--gold);
+  background:#C8934A;
   color:white;
+  font-size:16px;
   cursor:pointer;
 }
 
-/* CONTENT */
-.content{
-  display:none;
+button:hover{
+  opacity:0.9;
 }
 
-/* HERO */
-.hero{
-  background:var(--plum);
-  color:white;
-  padding:50px 20px;
+.footer{
   text-align:center;
-}
-
-.hero em{color:var(--gold)}
-
-.section{
-  padding:30px 20px;
-}
-
-.card{
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:20px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.05);
-}
-
-.price{
-  font-size:42px;
-  color:var(--plum);
-  font-weight:600;
-}
-
-button.cta{
-  background:var(--gold);
-  color:white;
-  border:none;
-  padding:16px;
-  border-radius:12px;
-  width:100%;
-  margin-top:10px;
-  cursor:pointer;
+  font-size:12px;
+  color:#777;
+  margin-top:20px;
 }
 </style>
+
 </head>
 
 <body>
 
-<!-- SENHA -->
-<div id="gate">
-  <h1>Conexão Psi</h1>
-  <input id="senha" type="password" placeholder="Digite a senha">
-  <button onclick="acessar()">Entrar</button>
-</div>
+<div class="container">
 
-<!-- CONTEÚDO -->
-<div class="content" id="content">
+  <div class="badge">Oferta exclusiva</div>
 
-  <div class="hero">
-    <h1>Plano <em>Fundadora</em></h1>
-    <p>Oferta exclusiva para profissionais da rede</p>
-  </div>
+  <h1>Plano Fundadora</h1>
+  <p>Oferta exclusiva para profissionais da rede</p>
 
-  <div class="section">
+  <p class="price">R$14,00</p>
+  <p>por mês</p>
 
-    <div class="card">
-      <h2>Condição especial</h2>
-      <p class="price">R$14,00</p>
-      <p>por mês · depois R$27,90</p>
-    </div>
+  <p class="old">Depois: R$27,90/mês</p>
 
-    <div class="card">
-      <h3>Benefícios</h3>
-      <p>✔ Bio completa</p>
-      <p>✔ Destaque no diretório</p>
-      <p>✔ WhatsApp no perfil</p>
-    </div>
+  <h3>Benefícios</h3>
 
-    <button class="cta">Assinar agora</button>
+  <ul>
+    <li>Bio completa</li>
+    <li>Destaque no diretório</li>
+    <li>WhatsApp no perfil</li>
+  </ul>
 
+  <button>Assinar agora</button>
+
+  <div class="footer">
+    Conexão Psi — Rede de psicólogas
   </div>
 
 </div>
-
-<script>
-function acessar(){
-  const senha = document.getElementById("senha").value.toLowerCase().trim();
-
-  if(senha === "fundadora" || senha === "conexaopsi"){
-    document.getElementById("gate").style.display = "none";
-    document.getElementById("content").style.display = "block";
-  } else {
-    alert("Senha incorreta");
-  }
-}
-</script>
 
 </body>
 </html>
