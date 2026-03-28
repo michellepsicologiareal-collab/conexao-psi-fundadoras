@@ -1,112 +1,118 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plano Fundadora — Conexão Psi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conexão Psi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
 
-<style>
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:#f5f3ef;
-  color:#2a1f3d;
-}
+    header {
+      background: #2d6cdf;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-.container{
-  max-width:600px;
-  margin:60px auto;
-  padding:24px;
-  background:white;
-  border-radius:16px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.08);
-}
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
 
-h1{
-  margin-bottom:10px;
-}
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
 
-.price{
-  font-size:40px;
-  font-weight:bold;
-  color:#2D1B4E;
-  margin:10px 0;
-}
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
 
-.old{
-  color:#777;
-  font-size:14px;
-}
+    .price {
+      font-size: 28px;
+      color: #2d6cdf;
+      margin: 10px 0;
+    }
 
-.badge{
-  display:inline-block;
-  background:#2D1B4E;
-  color:white;
-  padding:6px 12px;
-  border-radius:20px;
-  font-size:12px;
-  margin-bottom:20px;
-}
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+      font-size: 14px;
+    }
 
-ul{
-  padding-left:18px;
-}
+    ul {
+      padding-left: 18px;
+    }
 
-button{
-  margin-top:20px;
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:10px;
-  background:#C8934A;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-}
+    li {
+      margin: 8px 0;
+    }
 
-button:hover{
-  opacity:0.9;
-}
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #2d6cdf;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.footer{
-  text-align:center;
-  font-size:12px;
-  color:#777;
-  margin-top:20px;
-}
-</style>
+    .btn:hover {
+      background: #1f4fb0;
+    }
 
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
 </head>
 
 <body>
 
+<header>
+  <h1>Conexão Psi — Rede de Psicólogas</h1>
+</header>
+
 <div class="container">
 
-  <div class="badge">Oferta exclusiva</div>
+  <div class="card">
+    <div class="title">Plano Fundadora</div>
+    <p>Oferta exclusiva para profissionais da rede</p>
 
-  <h1>Plano Fundadora</h1>
-  <p>Oferta exclusiva para profissionais da rede</p>
+    <div class="price">R$14,00 / mês</div>
+    <div class="old-price">Depois: R$27,90/mês</div>
 
-  <p class="price">R$14,00</p>
-  <p>por mês</p>
+    <h3>Benefícios</h3>
+    <ul>
+      <li>Bio completa</li>
+      <li>Destaque no diretório</li>
+      <li>WhatsApp no perfil</li>
+    </ul>
 
-  <p class="old">Depois: R$27,90/mês</p>
-
-  <h3>Benefícios</h3>
-
-  <ul>
-    <li>Bio completa</li>
-    <li>Destaque no diretório</li>
-    <li>WhatsApp no perfil</li>
-  </ul>
-
-  <button>Assinar agora</button>
-
-  <div class="footer">
-    Conexão Psi — Rede de psicólogas
+    <a class="btn" href="#">Assinar agora</a>
   </div>
 
 </div>
+
+<footer>
+  Conexão Psi — Rede de psicólogas
+</footer>
 
 </body>
 </html>
