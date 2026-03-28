@@ -8,178 +8,322 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --plum:#2D1B4E;
-  --gold:#C8934A;
-  --cream:#FAF7F2;
-  --text:#2a1f3d;
-  --muted:#7a6e8a;
-}
+  :root {
+    --plum: #2D1B4E;
+    --plum-light: #3d2660;
+    --gold: #C8934A;
+    --gold-light: #e0a85a;
+    --cream: #FAF7F2;
+    --cream-dark: #F0EBE2;
+    --text: #2a1f3d;
+    --muted: #7a6e8a;
+  }
 
-*{margin:0;padding:0;box-sizing:border-box}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body{
-  font-family:Outfit,sans-serif;
-  background:var(--cream);
-  color:var(--text);
-}
+  body {
+    background: var(--cream);
+    font-family: 'Outfit', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
 
-/* GATE */
-#gate{
-  position:fixed;
-  inset:0;
-  background:var(--plum);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  padding:32px;
-  text-align:center;
-}
+  /* HERO */
+  .hero {
+    background: var(--plum);
+    padding: 48px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
 
-#gate h1{
-  font-family:"Cormorant Garamond",serif;
-  color:var(--cream);
-  margin-bottom:10px;
-}
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,147,74,0.18) 0%, transparent 70%);
+  }
 
-#gate input{
-  padding:14px;
-  width:100%;
-  max-width:300px;
-  border-radius:10px;
-  border:1px solid rgba(200,147,74,.4);
-  text-align:center;
-  margin:10px 0;
-}
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,147,74,0.12) 0%, transparent 70%);
+  }
 
-#gate button{
-  padding:12px 20px;
-  background:var(--gold);
-  border:none;
-  border-radius:10px;
-  font-weight:600;
-  cursor:pointer;
-}
+  .badge {
+    display: inline-block;
+    background: rgba(200,147,74,0.18);
+    border: 1px solid rgba(200,147,74,0.4);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
 
-#error{
-  display:none;
-  color:#ff8a80;
-  font-size:13px;
-  margin-top:10px;
-}
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
 
-/* HERO */
-.hero{
-  padding:40px 20px;
-  text-align:center;
-  background:var(--plum);
-  color:white;
-}
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
 
-.hero em{color:var(--gold)}
+  .hero p {
+    color: rgba(250,247,242,0.72);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 320px;
+    margin: 0 auto;
+  }
 
-/* PRICE */
-.price{
-  padding:20px;
-  text-align:center;
-}
+  /* PRICE */
+  .price-section {
+    padding: 0 20px;
+    margin-top: -24px;
+    position: relative;
+    z-index: 2;
+  }
 
-.card{
-  background:white;
-  padding:24px;
-  border-radius:16px;
-  max-width:400px;
-  margin:auto;
-}
+  .price-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 8px 40px rgba(45,27,78,0.14);
+    text-align: center;
+    border: 1px solid rgba(200,147,74,0.15);
+  }
 
-/* CTA */
-.cta{
-  padding:30px 20px;
-  text-align:center;
-}
+  .price-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
 
-.cta a{
-  display:block;
-  margin:10px auto;
-  padding:14px;
-  max-width:320px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:600;
-}
+  .price-main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2px;
+  }
 
-.primary{
-  background:var(--gold);
-  color:white;
-}
+  .price-currency {
+    font-size: 18px;
+    margin-top: 8px;
+    color: var(--plum);
+  }
 
-.secondary{
-  border:1px solid var(--plum);
-  color:var(--plum);
-  background:transparent;
-}
+  .price-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 600;
+    color: var(--plum);
+    line-height: 1;
+  }
+
+  .price-cents {
+    font-size: 22px;
+    margin-top: 10px;
+    color: var(--plum);
+  }
+
+  .price-period {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .price-detail {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--cream-dark);
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  .countdown {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #c0392b;
+    font-weight: 500;
+  }
+
+  /* BENEFITS */
+  .section {
+    padding: 32px 20px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--plum);
+  }
+
+  .benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 12px;
+    background: white;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .benefit-icon {
+    font-size: 18px;
+  }
+
+  .benefit-text strong {
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 32px 20px 48px;
+    text-align: center;
+  }
+
+  .cta-btn {
+    display: block;
+    background: var(--gold);
+    color: white;
+    padding: 18px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .cta-secondary {
+    display: block;
+    border: 1px solid var(--plum);
+    color: var(--plum);
+    padding: 14px;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+
+  footer {
+    background: var(--plum);
+    padding: 24px;
+    text-align: center;
+    color: var(--cream);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+  }
+
+  .footer-logo span {
+    color: var(--gold);
+  }
+
 </style>
 </head>
 
 <body>
 
-<!-- GATE ÚNICO -->
-<div id="gate">
-  <h1>Conexão <span style="color:#C8934A">Psi</span></h1>
-  <p style="color:rgba(255,255,255,.6);font-size:12px">Área exclusiva</p>
-
-  <input id="senha" type="password" placeholder="Digite a senha">
-
-  <button onclick="check()">Entrar</button>
-
-  <div id="error">Senha incorreta</div>
-</div>
-
-<!-- CONTEÚDO -->
-<div id="content" style="display:none">
-
+<!-- HERO -->
 <div class="hero">
+  <div class="badge">✦ Oferta Exclusiva</div>
   <h1>Plano <em>Fundadora</em></h1>
-  <p>Oferta exclusiva para profissionais da rede</p>
+  <p>Para profissionais da rede Conexão Psi</p>
 </div>
 
-<div class="price">
-  <div class="card">
-    <p>R$ 14,00 / mês (3 meses)</p>
-    <small>Depois: R$ 27,90</small>
+<!-- PRICE -->
+<div class="price-section">
+  <div class="price-card">
+    <p class="price-label">Condição especial por 3 meses</p>
+
+    <div class="price-main">
+      <span class="price-currency">R$</span>
+      <span class="price-value">14</span>
+      <span class="price-cents">,00</span>
+    </div>
+
+    <p class="price-period">por mês · cancelamento livre</p>
+    <span class="price-detail">Depois: R$27,90/mês</span>
+
+    <div class="countdown">
+      ⚠️ Oferta por tempo limitado
+    </div>
   </div>
 </div>
 
-<div class="cta">
-  <a class="primary" href="https://pay.kiwify.com.br/O5SVu87?coupon=FUNDADORA">
-    Assinar agora
+<!-- BENEFITS -->
+<div class="section">
+  <div class="section-title">O que você ganha</div>
+
+  <div class="benefit-list">
+    <div class="benefit-item">
+      <div class="benefit-icon">✍️</div>
+      <div class="benefit-text">
+        <strong>Bio completa</strong>
+        Destaque sua abordagem profissional
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <div class="benefit-icon">⭐</div>
+      <div class="benefit-text">
+        <strong>Destaque no diretório</strong>
+        Mais visibilidade para pacientes
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <div class="benefit-icon">📲</div>
+      <div class="benefit-text">
+        <strong>Contato direto</strong>
+        WhatsApp no perfil
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <a class="cta-btn" href="https://pay.kiwify.com.br/O5SVu87?coupon=FUNDADORA">
+    Assinar agora — R$14
   </a>
 
-  <a class="secondary" href="https://tinyurl.com/ConexaoPsiRede">
-    Ver perfil
+  <a class="cta-secondary" href="https://tinyurl.com/ConexaoPsiRede">
+    Ver diretório
   </a>
 </div>
 
-</div>
-
-<script>
-function check(){
-  const senha = document.getElementById("senha").value.trim().toLowerCase();
-
-  if(
-    senha === "conexaopsi" ||
-    senha === "conexão psi" ||
-    senha === "fundadora"
-  ){
-    document.getElementById("gate").style.display="none";
-    document.getElementById("content").style.display="block";
-  } else {
-    document.getElementById("error").style.display="block";
-  }
-}
-</script>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Conexão <span>Psi</span></div>
+</footer>
 
 </body>
 </html>
