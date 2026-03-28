@@ -417,8 +417,14 @@
   align-items:center; justify-content:center;
   padding:32px; text-align:center;
 ">
-  <div style="font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--cream); margin-bottom:8px;">Conexão <span style="color:var(--gold)">Psi</span></div>
-  <p style="font-size:12px; letter-spacing:2px; text-transform:uppercase; color:rgba(250,247,242,0.45); margin-bottom:32px;">Área exclusiva · Grupo de membros</p>
+  <div style="font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--cream); margin-bottom:8px;">
+    Conexão <span style="color:var(--gold)">Psi</span>
+  </div>
+
+  <p style="font-size:12px; letter-spacing:2px; text-transform:uppercase; color:rgba(250,247,242,0.45); margin-bottom:32px;">
+    Área exclusiva · Grupo de membros
+  </p>
+
   <input id="pwd" type="password" placeholder="Digite a senha do grupo"
     style="
       width:100%; max-width:300px;
@@ -429,6 +435,25 @@
       font-family:'Outfit',sans-serif;
       outline:none; margin-bottom:12px;
       text-align:center;
+    " />
+
+  <div id="pwd-err" style="display:none; color:#ffb4b4; font-size:12px;">
+    Senha incorreta
+  </div>
+
+  <button onclick="checkPwd()" style="
+    margin-top:10px;
+    padding:10px 18px;
+    border-radius:10px;
+    border:none;
+    background:var(--gold);
+    color:var(--plum);
+    font-weight:600;
+    cursor:pointer;
+  ">
+    Entrar
+  </button>
+</div>
     "
   />
   <button onclick="checkPwd()" style="
