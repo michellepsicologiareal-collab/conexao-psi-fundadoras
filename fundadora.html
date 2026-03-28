@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano Fundadora — Conexão Psi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #2D1B4E;
+    --gold: #C8934A;
+    --cream: #FAF7F2;
+    --cream-dark: #F0EBE2;
+    --text: #2a1f3d;
+    --muted: #7a6e8a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); font-family: 'Outfit', sans-serif; color: var(--text); }
+
+  /* HERO */
+  .hero { background: var(--plum); padding: 48px 24px 56px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle,rgba(200,147,74,.18) 0%,transparent 70%); }
+  .badge { display:inline-block; background:rgba(200,147,74,.18); border:1px solid rgba(200,147,74,.4); color:var(--gold); font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; padding:6px 16px; border-radius:20px; margin-bottom:20px; }
+  .hero h1 { font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:500; color:var(--cream); line-height:1.15; margin-bottom:12px; }
+  .hero h1 em { font-style:italic; color:var(--gold); }
+  .hero p { color:rgba(250,247,242,.72); font-size:15px; font-weight:300; line-height:1.6; max-width:320px; margin:0 auto; }
+
+  /* PRICE CARD */
+  .price-section { padding:0 20px; margin-top:-24px; position:relative; z-index:2; }
+  .price-card { background:white; border-radius:20px; padding:28px 24px; box-shadow:0 8px 40px rgba(45,27,78,.14); text-align:center; border:1px solid rgba(200,147,74,.15); }
+  .price-label { font-size:12px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .price-main { display:flex; align-items:flex-start; justify-content:center; gap:2px; margin-bottom:4px; }
+  .price-currency { font-size:18px; font-weight:500; color:var(--plum); margin-top:8px; }
+  .price-value { font-family:'Cormorant Garamond',serif; font-size:64px; font-weight:600; color:var(--plum); line-height:1; }
+  .price-cents { font-size:22px; font-weight:500; color:var(--plum); margin-top:10px; }
+  .price-period { font-size:13px; color:var(--muted); margin-bottom:12px; }
+  .price-detail { font-size:12px; color:var(--muted); background:var(--cream-dark); padding:8px 16px; border-radius:8px; display:inline-block; }
+  .price-detail strong { color:var(--text); }
+  .countdown { margin-top:16px; display:flex; align-items:center; justify-content:center; gap:6px; font-size:12px; color:#c0392b; font-weight:500; }
+  .countdown-dot { width:6px; height:6px; background:#c0392b; border-radius:50%; animation:pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
+
+  /* BENEFITS */
+  .section { padding:32px 20px; }
+  .section-title { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:500; color:var(--plum); margin-bottom:20px; text-align:center; }
+  .benefit-list { display:flex; flex-direction:column; gap:12px; }
+  .benefit-item { display:flex; align-items:flex-start; gap:12px; background:white; padding:14px 16px; border-radius:12px; border-left:3px solid var(--gold); box-shadow:0 2px 8px rgba(45,27,78,.06); }
+  .benefit-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+  .benefit-text { font-size:14px; line-height:1.5; color:var(--text); }
+  .benefit-text strong { font-weight:600; display:block; margin-bottom:2px; }
+
+  /* COMPARE */
+  .compare-section { padding:8px 20px 32px; }
+  .compare-card { background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(45,27,78,.08); }
+  .compare-header { display:grid; grid-template-columns:1fr 1fr 1fr; background:var(--plum); }
+  .compare-header div { padding:12px 8px; text-align:center; font-size:11px; font-weight:600; letter-spacing:.5px; color:rgba(250,247,242,.7); text-transform:uppercase; }
+  .compare-header div:last-child { color:var(--gold); background:rgba(200,147,74,.12); }
+  .compare-row { display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--cream-dark); }
+  .compare-row:last-child { border-bottom:none; }
+  .compare-cell { padding:11px 8px; text-align:center; font-size:13px; color:var(--text); border-right:1px solid var(--cream-dark); }
+  .compare-cell:last-child { border-right:none; background:rgba(200,147,74,.04); font-weight:500; color:var(--plum); }
+  .compare-cell:first-child { text-align:left; padding-left:14px; color:var(--muted); font-size:12px; }
+  .check { color:#2ecc71; font-size:16px; }
+  .cross { color:#bbb; font-size:14px; }
+
+  /* DISCLAIMER */
+  .disclaimer { background:var(--cream-dark); margin:0 20px; padding:16px 18px; border-radius:12px; font-size:13px; color:var(--muted); line-height:1.6; border-left:3px solid rgba(200,147,74,.4); }
+  .disclaimer strong { color:var(--text); }
+
+  /* GUIDE SECTION */
+  .guide-section { padding:32px 20px; }
+  .guide-title { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:500; color:var(--plum); margin-bottom:6px; text-align:center; }
+  .guide-sub { font-size:13px; color:var(--muted); text-align:center; margin-bottom:24px; }
+  .step-card { background:white; border-radius:14px; padding:18px; margin-bottom:12px; box-shadow:0 2px 8px rgba(45,27,78,.06); border:1px solid rgba(45,27,78,.07); }
+  .step-head { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .snum { width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; flex-shrink:0; }
+  .s-purple { background:#EEEDFE; color:#3C3489; }
+  .s-teal   { background:#E1F5EE; color:#085041; }
+  .s-blue   { background:#E6F1FB; color:#0C447C; }
+  .s-gold   { background:#FAEEDA; color:#854F0B; }
+  .step-name { font-size:14px; font-weight:600; color:var(--text); }
+  .step-desc { font-size:12px; color:var(--muted); margin-top:2px; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+  .chip { display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:16px; font-size:11px; border:1px solid rgba(45,27,78,.12); background:var(--cream); }
+  .chip-k { font-weight:600; color:var(--text); }
+  .chip-v { font-family:monospace; background:var(--cream-dark); padding:2px 6px; border-radius:4px; font-size:10px; color:var(--plum); }
+  .divider { height:1px; background:var(--cream-dark); margin:10px 0; }
+  .flow { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .fbox { padding:5px 10px; border-radius:6px; font-size:11px; font-weight:500; border:1px solid rgba(45,27,78,.12); color:var(--muted); background:var(--cream); }
+  .farrow { color:var(--muted); font-size:12px; }
+  .fnote { font-size:11px; color:var(--muted); background:var(--cream-dark); padding:8px 12px; border-radius:6px; border-left:2px solid rgba(200,147,74,.5); margin-top:10px; }
+
+  /* CTA */
+  .cta-section { padding:32px 20px 48px; text-align:center; }
+  .cta-btn { display:block; width:100%; background:var(--gold); color:white; font-family:'Outfit',sans-serif; font-size:16px; font-weight:600; padding:18px 24px; border-radius:14px; text-decoration:none; letter-spacing:.3px; box-shadow:0 8px 24px rgba(200,147,74,.35); margin-bottom:12px; }
+  .cta-secondary { display:block; width:100%; background:transparent; color:var(--plum); font-family:'Outfit',sans-serif; font-size:14px; font-weight:500; padding:14px 24px; border-radius:14px; text-decoration:none; border:1.5px solid rgba(45,27,78,.2); margin-bottom:20px; }
+  .cta-note { font-size:12px; color:var(--muted); line-height:1.6; }
+
+  /* FOOTER */
+  footer { background:var(--plum); padding:24px; text-align:center; }
+  .footer-logo { font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--cream); margin-bottom:6px; }
+  .footer-logo span { color:var(--gold); }
+  .footer-sub { font-size:11px; color:rgba(250,247,242,.45); letter-spacing:1px; text-transform:uppercase; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .hero,.price-section,.section,.compare-section,.guide-section,.cta-section { animation:fadeUp .5s ease both; }
+  .price-section{animation-delay:.1s} .section{animation-delay:.15s} .compare-section{animation-delay:.2s} .guide-section{animation-delay:.25s} .cta-section{animation-delay:.3s}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">✦ Oferta Exclusiva</div>
+  <h1>Perfil Premium<br><em>Plano Fundadora</em></h1>
+  <p>Para as profissionais que ajudaram a construir a Conexão Psi desde o início.</p>
+</div>
+
+<div class="price-section">
+  <div class="price-card">
+    <p class="price-label">Condição especial por 3 meses</p>
+    <div class="price-main">
+      <span class="price-currency">R$</span>
+      <span class="price-value">14</span>
+      <span class="price-cents">,00</span>
+    </div>
+    <p class="price-period">por mês · cancelamento livre</p>
+    <span class="price-detail">Após 3 meses: <strong>R$27,90/mês</strong></span>
+    <div class="countdown"><span class="countdown-dot"></span>Oferta válida por apenas 7 dias</div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="section-title">O que muda com o Premium</p>
+  <div class="benefit-list">
+    <div class="benefit-item"><span class="benefit-icon">✍️</span><div class="benefit-text"><strong>Bio profissional completa</strong>Apresente sua abordagem, experiência e forma de trabalho para o paciente.</div></div>
+    <div class="benefit-item"><span class="benefit-icon">⭐</span><div class="benefit-text"><strong>Destaque dourado no diretório</strong>Seu perfil aparece em seção exclusiva, antes das demais.</div></div>
+    <div class="benefit-item"><span class="benefit-icon">🔍</span><div class="benefit-text"><strong>Prioridade nas buscas</strong>Maior visibilidade quando pacientes pesquisam por especialidade ou cidade.</div></div>
+    <div class="benefit-item"><span class="benefit-icon">📲</span><div class="benefit-text"><strong>Contato direto via WhatsApp</strong>Pacientes chegam até você com um clique, sem intermediários.</div></div>
+    <div class="benefit-item"><span class="benefit-icon">🎯</span><div class="benefit-text"><strong>Especialidades em evidência</strong>Suas áreas de atuação em destaque no seu cartão de perfil.</div></div>
+  </div>
+</div>
+
+<div class="compare-section">
+  <p class="section-title">Gratuito vs Premium</p>
+  <div class="compare-card">
+    <div class="compare-header"><div>Recurso</div><div>Gratuito</div><div>⭐ Premium</div></div>
+    <div class="compare-row"><div class="compare-cell">Perfil no diretório</div><div class="compare-cell"><span class="check">✓</span></div><div class="compare-cell"><span class="check">✓</span></div></div>
+    <div class="compare-row"><div class="compare-cell">Encaminhamentos da rede</div><div class="compare-cell"><span class="check">✓</span></div><div class="compare-cell"><span class="check">✓</span></div></div>
+    <div class="compare-row"><div class="compare-cell">Bio completa visível</div><div class="compare-cell"><span class="cross">—</span></div><div class="compare-cell"><span class="check">✓</span></div></div>
+    <div class="compare-row"><div class="compare-cell">Destaque dourado</div><div class="compare-cell"><span class="cross">—</span></div><div class="compare-cell"><span class="check">✓</span></div></div>
+    <div class="compare-row"><div class="compare-cell">WhatsApp no perfil</div><div class="compare-cell"><span class="cross">—</span></div><div class="compare-cell"><span class="check">✓</span></div></div>
+    <div class="compare-row"><div class="compare-cell">Prioridade na busca</div><div class="compare-cell"><span class="cross">—</span></div><div class="compare-cell"><span class="check">✓</span></div></div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <strong>Importante:</strong> Você continua na rede e recebe encaminhamentos mesmo sem o Premium. A diferença é o nível de visibilidade e exposição para pacientes — não o pertencimento à rede.
+</div>
+
+<!-- CTA PRINCIPAL -->
+<div class="cta-section">
+  <a href="https://pay.kiwify.com.br/O5SVu87?coupon=FUNDADORA" class="cta-btn">⭐ Assinar como Fundadora — R$14,00</a>
+  <a href="https://tinyurl.com/ConexaoPsiRede" class="cta-secondary">🔗 Ver meu perfil no diretório</a>
+  <p class="cta-note">Dúvidas? Fale com a gente no privado.<br><strong>@Michelle</strong> ou <strong>@Clécio</strong></p>
+</div>
+
+<!-- SEPARADOR -->
+<div style="height:2px; background:var(--cream-dark); margin:0 20px;"></div>
+
+<!-- GUIA DO SISTEMA -->
+<div class="guide-section">
+  <p class="guide-title">Como funciona a Conexão Psi</p>
+  <p class="guide-sub">Tudo que você precisa saber para usar a rede</p>
+
+  <div class="step-card">
+    <div class="step-head"><div class="snum s-purple">1</div><div><div class="step-name">Diretório público — pacientes encontram psicólogos</div><div class="step-desc">Sem senha — acesso livre para qualquer pessoa</div></div></div>
+    <div class="chips"><div class="chip"><span class="chip-k">Link</span><span class="chip-v">tinyurl.com/ConexaoPsiRede</span></div><div class="chip"><span class="chip-k">Acesso</span><span class="chip-v">público</span></div></div>
+    <div class="divider"></div>
+    <div class="flow"><div class="fbox">Paciente abre o site</div><div class="farrow">→</div><div class="fbox">Vê perfis Premium e Gratuitos</div><div class="farrow">→</div><div class="fbox">Clica no WhatsApp</div></div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><div class="snum s-teal">2</div><div><div class="step-name">Cadastro de psicóloga na rede</div><div class="step-desc">Formulário Tally → Supabase → aguarda aprovação</div></div></div>
+    <div class="chips"><div class="chip"><span class="chip-k">Link</span><span class="chip-v">tally.so/r/b5OGYZ</span></div><div class="chip"><span class="chip-k">Acesso</span><span class="chip-v">público</span></div></div>
+    <div class="divider"></div>
+    <div class="flow"><div class="fbox">Preenche Tally</div><div class="farrow">→</div><div class="fbox">Entra como pendente</div><div class="farrow">→</div><div class="fbox">Admin aprova</div><div class="farrow">→</div><div class="fbox">Aparece no site</div></div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><div class="snum s-teal">3</div><div><div class="step-name">Área da psicóloga — editar perfil</div><div class="step-desc">Login pelo e-mail cadastrado no Tally</div></div></div>
+    <div class="chips"><div class="chip"><span class="chip-k">Link</span><span class="chip-v">…/perfil.html</span></div><div class="chip"><span class="chip-k">Acesso</span><span class="chip-v">e-mail do cadastro</span></div></div>
+    <div class="divider"></div>
+    <div class="flow"><div class="fbox">Entra com e-mail</div><div class="farrow">→</div><div class="fbox">Edita WhatsApp, bio, valor, disponibilidade</div><div class="farrow">→</div><div class="fbox">Salva</div></div>
+    <div class="fnote">Dados salvos aparecem automaticamente no diretório.</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><div class="snum s-blue">4</div><div><div class="step-name">Área de pacientes — encaminhamentos da rede</div><div class="step-desc">Restrita às psicólogas cadastradas</div></div></div>
+    <div class="chips"><div class="chip"><span class="chip-k">Link</span><span class="chip-v">…/pacientes.html</span></div><div class="chip"><span class="chip-k">Senha psi</span><span class="chip-v">redepsi2026</span></div></div>
+    <div class="divider"></div>
+    <div class="flow"><div class="fbox">Entra com senha</div><div class="farrow">→</div><div class="fbox">Vê pacientes disponíveis</div><div class="farrow">→</div><div class="fbox">Registra interesse</div><div class="farrow">→</div><div class="fbox">Admin envia contato</div></div>
+    <div class="fnote">Máximo 3 psis por paciente. Dados do paciente só são liberados pelo admin.</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><div class="snum s-blue">5</div><div><div class="step-name">Indicar um paciente para a rede</div><div class="step-desc">Formulário confidencial — sem senha</div></div></div>
+    <div class="chips"><div class="chip"><span class="chip-k">Link</span><span class="chip-v">tally.so/r/gD46z1</span></div><div class="chip"><span class="chip-k">Acesso</span><span class="chip-v">psis da rede</span></div></div>
+    <div class="divider"></div>
+    <div class="flow"><div class="fbox">Preenche perfil do paciente</div><div class="farrow">→</div><div class="fbox">Aparece em pacientes.html</div><div class="farrow">→</div><div class="fbox">Outra psi pega o caso</div></div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><div class="snum s-gold">6</div><div><div class="step-name">Assinar Perfil Premium</div><div class="step-desc">Destaque dourado + bio + WhatsApp no perfil</div></div></div>
+    <div class="chips"><div class="chip"><span class="chip-k">Planos</span><span class="chip-v">…/planos.html</span></div><div class="chip"><span class="chip-k">Fundadoras</span><span class="chip-v">…/fundadora.html</span></div></div>
+    <div class="divider"></div>
+    <div class="flow"><div class="fbox">Clica em assinar</div><div class="farrow">→</div><div class="fbox">Kiwify R$14 fundadora</div><div class="farrow">→</div><div class="fbox">Admin ativa premium</div></div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta-section" style="padding-top:0;">
+  <a href="https://pay.kiwify.com.br/O5SVu87?coupon=FUNDADORA" class="cta-btn">⭐ Assinar como Fundadora — R$14,00</a>
+  <p class="cta-note">Dúvidas? Fale com a gente no privado.<br><strong>@Michelle</strong> ou <strong>@Clécio</strong></p>
+</div>
+
+<footer>
+  <div class="footer-logo">Conexão <span>Psi</span></div>
+  <div class="footer-sub">Rede colaborativa de psicólogos</div>
+</footer>
+
+</body>
+</html>
