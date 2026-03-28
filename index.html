@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano Fundadora — Conexão Psi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #2D1B4E;
+    --plum-light: #3d2660;
+    --gold: #C8934A;
+    --gold-light: #e0a85a;
+    --cream: #FAF7F2;
+    --cream-dark: #F0EBE2;
+    --text: #2a1f3d;
+    --muted: #7a6e8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Outfit', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--plum);
+    padding: 48px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,147,74,0.18) 0%, transparent 70%);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,147,74,0.12) 0%, transparent 70%);
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(200,147,74,0.18);
+    border: 1px solid rgba(200,147,74,0.4);
+    color: var(--gold);
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero p {
+    color: rgba(250,247,242,0.72);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  /* PRICE CARD */
+  .price-section {
+    padding: 0 20px;
+    margin-top: -24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .price-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 8px 40px rgba(45,27,78,0.14);
+    text-align: center;
+    border: 1px solid rgba(200,147,74,0.15);
+  }
+
+  .price-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .price-main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: 4px;
+  }
+
+  .price-currency {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--plum);
+    margin-top: 8px;
+  }
+
+  .price-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 600;
+    color: var(--plum);
+    line-height: 1;
+  }
+
+  .price-cents {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--plum);
+    margin-top: 10px;
+  }
+
+  .price-period {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .price-detail {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--cream-dark);
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  .price-detail strong {
+    color: var(--text);
+  }
+
+  .countdown {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #c0392b;
+    font-weight: 500;
+  }
+
+  .countdown-dot {
+    width: 6px; height: 6px;
+    background: #c0392b;
+    border-radius: 50%;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  /* BENEFITS */
+  .section {
+    padding: 32px 20px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--plum);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: white;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border-left: 3px solid var(--gold);
+    box-shadow: 0 2px 8px rgba(45,27,78,0.06);
+  }
+
+  .benefit-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .benefit-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .benefit-text strong {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* COMPARE */
+  .compare-section {
+    padding: 8px 20px 32px;
+  }
+
+  .compare-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(45,27,78,0.08);
+  }
+
+  .compare-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--plum);
+  }
+
+  .compare-header div {
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(250,247,242,0.7);
+    text-transform: uppercase;
+  }
+
+  .compare-header div:last-child {
+    color: var(--gold);
+    background: rgba(200,147,74,0.12);
+  }
+
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .compare-row:last-child { border-bottom: none; }
+
+  .compare-cell {
+    padding: 11px 8px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text);
+    border-right: 1px solid var(--cream-dark);
+  }
+
+  .compare-cell:last-child {
+    border-right: none;
+    background: rgba(200,147,74,0.04);
+    font-weight: 500;
+    color: var(--plum);
+  }
+
+  .compare-cell:first-child {
+    text-align: left;
+    padding-left: 14px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .check { color: #2ecc71; font-size: 16px; }
+  .cross { color: #bbb; font-size: 14px; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: var(--cream-dark);
+    margin: 0 20px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    border-left: 3px solid rgba(200,147,74,0.4);
+  }
+
+  .disclaimer strong {
+    color: var(--text);
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 32px 20px 48px;
+    text-align: center;
+  }
+
+  .cta-btn {
+    display: block;
+    width: 100%;
+    background: var(--gold);
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 18px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    box-shadow: 0 8px 24px rgba(200,147,74,0.35);
+    transition: all 0.2s ease;
+    margin-bottom: 12px;
+  }
+
+  .cta-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 12px rgba(200,147,74,0.25);
+  }
+
+  .cta-secondary {
+    display: block;
+    width: 100%;
+    background: transparent;
+    color: var(--plum);
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 14px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    border: 1.5px solid rgba(45,27,78,0.2);
+    margin-bottom: 20px;
+  }
+
+  .cta-note {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--plum);
+    padding: 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-sub {
+    font-size: 11px;
+    color: rgba(250,247,242,0.45);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero, .price-section, .section, .compare-section, .cta-section {
+    animation: fadeUp 0.5s ease both;
+  }
+  .price-section { animation-delay: 0.1s; }
+  .section { animation-delay: 0.2s; }
+  .compare-section { animation-delay: 0.25s; }
+  .cta-section { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- SENHA -->
+<div id="gate" style="
+  position:fixed; inset:0; z-index:9999;
+  background:var(--plum);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:32px; text-align:center;
+">
+  <div style="font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--cream); margin-bottom:8px;">Conexão <span style="color:var(--gold)">Psi</span></div>
+  <p style="font-size:12px; letter-spacing:2px; text-transform:uppercase; color:rgba(250,247,242,0.45); margin-bottom:32px;">Área exclusiva · Grupo de membros</p>
+  <input id="pwd" type="password" placeholder="Digite a senha do grupo"
+    style="
+      width:100%; max-width:300px;
+      padding:14px 18px; border-radius:12px;
+      border:1.5px solid rgba(200,147,74,0.4);
+      background:rgba(255,255,255,0.06);
+      color:var(--cream); font-size:15px;
+      font-family:'Outfit',sans-serif;
+      outline:none; margin-bottom:12px;
+      text-align:center;
+    "
+  />
+  <button onclick="checkPwd()" style="
+    width:100%; max-width:300px;
+    padding:14px; border-radius:12px;
+    background:var(--gold); color:white;
+    border:none; font-size:15px; font-weight:600;
+    font-family:'Outfit',sans-serif; cursor:pointer;
+  ">Entrar</button>
+  <p id="pwd-err" style="color:#ff8080; font-size:13px; margin-top:12px; display:none;">Senha incorreta. Verifique com a admin.</p>
+</div>
+
+<div id="content" style="display:none">
+
+<script>
+function checkPwd() {
+  const val = document.getElementById('pwd').value.trim().toLowerCase();
+  if (val === 'conexaopsi' || val === 'conexão psi' || val === 'conexaopsi2024') {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  } else {
+    document.getElementById('pwd-err').style.display = 'block';
+  }
+}
+document.getElementById('pwd').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') checkPwd();
+});
+</script>
+
+<!-- SENHA GATE -->
+<div id="gate" style="
+  position:fixed; inset:0; background:var(--plum);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  z-index:9999; padding:32px;
+">
+  <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--cream); margin-bottom:8px;">Conexão <span style='color:var(--gold)'>Psi</span></div>
+  <div style="font-size:12px; letter-spacing:2px; text-transform:uppercase; color:rgba(250,247,242,0.5); margin-bottom:32px;">Área exclusiva</div>
+  <input id="senhaInput" type="password" placeholder="Digite a senha do grupo"
+    style="width:100%; max-width:300px; padding:14px 18px; border-radius:12px; border:1.5px solid rgba(200,147,74,0.4); background:rgba(255,255,255,0.06); color:white; font-family:'Outfit',sans-serif; font-size:15px; outline:none; text-align:center; margin-bottom:12px;"
+    onkeydown="if(event.key==='Enter') verificarSenha()"
+  />
+  <button onclick="verificarSenha()" style="
+    width:100%; max-width:300px; background:var(--gold); color:white;
+    font-family:'Outfit',sans-serif; font-size:15px; font-weight:600;
+    padding:14px; border-radius:12px; border:none; cursor:pointer;
+    margin-bottom:12px;
+  ">Entrar</button>
+  <div id="erroSenha" style="color:#ff8a80; font-size:13px; display:none;">Senha incorreta. Tente novamente.</div>
+</div>
+
+<script>
+function verificarSenha() {
+  const senha = document.getElementById('senhaInput').value.trim().toLowerCase();
+  if (senha === 'fundadora' || senha === 'conexaopsi') {
+    document.getElementById('gate').style.display = 'none';
+  } else {
+    document.getElementById('erroSenha').style.display = 'block';
+    document.getElementById('senhaInput').value = '';
+    document.getElementById('senhaInput').focus();
+  }
+}
+</script>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">✦ Oferta Exclusiva</div>
+  <h1>Perfil Premium<br><em>Plano Fundadora</em></h1>
+  <p>Para as profissionais que ajudaram a construir a Conexão Psi desde o início.</p>
+</div>
+
+<!-- PRICE CARD -->
+<div class="price-section">
+  <div class="price-card">
+    <p class="price-label">Condição especial por 3 meses</p>
+    <div class="price-main">
+      <span class="price-currency">R$</span>
+      <span class="price-value">14</span>
+      <span class="price-cents">,00</span>
+    </div>
+    <p class="price-period">por mês · cancelamento livre</p>
+    <span class="price-detail">Após 3 meses: <strong>R$27,90/mês</strong></span>
+    <div class="countdown">
+      <span class="countdown-dot"></span>
+      Oferta válida por apenas 7 dias
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="section">
+  <p class="section-title">O que muda com o Premium</p>
+  <div class="benefit-list">
+    <div class="benefit-item">
+      <span class="benefit-icon">✍️</span>
+      <div class="benefit-text">
+        <strong>Bio profissional completa</strong>
+        Apresente sua abordagem, experiência e forma de trabalho para o paciente.
+      </div>
+    </div>
+    <div class="benefit-item">
+      <span class="benefit-icon">⭐</span>
+      <div class="benefit-text">
+        <strong>Destaque dourado no diretório</strong>
+        Seu perfil aparece em seção exclusiva, antes das demais.
+      </div>
+    </div>
+    <div class="benefit-item">
+      <span class="benefit-icon">🔍</span>
+      <div class="benefit-text">
+        <strong>Prioridade nas buscas</strong>
+        Maior visibilidade quando pacientes pesquisam por especialidade ou cidade.
+      </div>
+    </div>
+    <div class="benefit-item">
+      <span class="benefit-icon">📲</span>
+      <div class="benefit-text">
+        <strong>Contato direto via WhatsApp</strong>
+        Pacientes chegam até você com um clique, sem intermediários.
+      </div>
+    </div>
+    <div class="benefit-item">
+      <span class="benefit-icon">🎯</span>
+      <div class="benefit-text">
+        <strong>Especialidades em evidência</strong>
+        Suas áreas de atuação em destaque no seu cartão de perfil.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<div class="compare-section">
+  <p class="section-title">Gratuito vs Premium</p>
+  <div class="compare-card">
+    <div class="compare-header">
+      <div>Recurso</div>
+      <div>Gratuito</div>
+      <div>⭐ Premium</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">Perfil no diretório</div>
+      <div class="compare-cell"><span class="check">✓</span></div>
+      <div class="compare-cell"><span class="check">✓</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">Encaminhamentos da rede</div>
+      <div class="compare-cell"><span class="check">✓</span></div>
+      <div class="compare-cell"><span class="check">✓</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">Bio completa visível</div>
+      <div class="compare-cell"><span class="cross">—</span></div>
+      <div class="compare-cell"><span class="check">✓</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">Destaque dourado</div>
+      <div class="compare-cell"><span class="cross">—</span></div>
+      <div class="compare-cell"><span class="check">✓</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">WhatsApp no perfil</div>
+      <div class="compare-cell"><span class="cross">—</span></div>
+      <div class="compare-cell"><span class="check">✓</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">Prioridade na busca</div>
+      <div class="compare-cell"><span class="cross">—</span></div>
+      <div class="compare-cell"><span class="check">✓</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>Importante:</strong> Você continua na rede e recebe encaminhamentos mesmo sem o Premium. A diferença é o nível de visibilidade e exposição para pacientes — não o pertencimento à rede.
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <a href="https://pay.kiwify.com.br/O5SVu87?coupon=FUNDADORA" class="cta-btn">
+    ⭐ Assinar como Fundadora — R$14,00
+  </a>
+  <a href="https://tinyurl.com/ConexaoPsiRede" class="cta-secondary">
+    🔗 Ver meu perfil no diretório
+  </a>
+  <p class="cta-note">
+    Dúvidas? Fale com a gente no privado.<br>
+    <strong>@Michelle</strong> ou <strong>@Clécio</strong>
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Conexão <span>Psi</span></div>
+  <div class="footer-sub">Rede colaborativa de psicólogos</div>
+</footer>
+
+</div><!-- fim content -->
+
+</body>
+</html>
